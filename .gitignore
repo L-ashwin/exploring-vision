@@ -1,2 +1,5 @@
 __pycache__
 .ipynb_checkpoints/
+detection/tf-detection-api/models
+**/pre_trained_models/
+**/dataset/
