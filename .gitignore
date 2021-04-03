@@ -3,3 +3,5 @@ __pycache__
 detection/tf-detection-api/models
 **/pre_trained_models/
 **/dataset/
+**/models/
+**/exported-models/
