@@ -3,9 +3,9 @@ import glob
 import pandas as pd
 import xml.etree.ElementTree as ET
 
-def get_object_csv_from_xmls(DIR):
+def get_object_csv_from_xmls(SOURCE):
     """
-    parse all xml files from given directory return dataframe with a row for each object instance.
+    parse all xml files from given directory/list return dataframe with a row for each object instance.
     
     xml structure
     root:
@@ -23,8 +23,15 @@ def get_object_csv_from_xmls(DIR):
     
     returns: dataframe
     """
+    if isinstance(SOURCE, str):
+        li = glob.glob(os.path.join(SOURCE, '*.xml'))
+    elif isinstance(SOURCE, list):
+        li = SOURCE
+    else:
+        return 'Invalid input type'
+    
     annotations = []
-    for xml_path in glob.glob(os.path.join(DIR, '*.xml')):
+    for xml_path in li:
         root = ET.parse(xml_path)
 
         img_dict = {
